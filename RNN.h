@@ -26,6 +26,14 @@ struct RNNParams {
 			return _rnn.W2.outDim();
 	}
 
+	inline void save(std::ofstream &os) const {
+		_rnn.save(os);
+	}
+
+	inline void load(std::ifstream &is, AlignedMemoryPool* mem = NULL) {
+		_rnn.load(is, mem);
+	}
+
 };
 
 class RNNBuilder{

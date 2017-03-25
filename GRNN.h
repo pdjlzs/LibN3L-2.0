@@ -32,6 +32,18 @@ struct GRNNParams{
 	inline int outDim(){
 		return _rnn.W2.outDim();
 	}
+
+	inline void save(std::ofstream &os) const {
+		_rnn.save(os);
+		_rnn_update.save(os);
+		_rnn_reset.save(os);
+	}
+
+	inline void load(std::ifstream &is, AlignedMemoryPool* mem = NULL) {
+		_rnn.load(is, mem);
+		_rnn_update.load(is, mem);
+		_rnn_reset.load(is, mem);
+	}
 };
 
 class GRNNBuilder{
